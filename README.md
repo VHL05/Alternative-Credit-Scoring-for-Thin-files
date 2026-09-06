@@ -1,4 +1,4 @@
-# Shinsa AI: Hệ thống Chấm điểm Tín dụng Thay thế cho Khách hàng "Thin-file"
+# Shinsa AI: Mô hình Phân loại Nhị phân Duyệt/Từ chối Vay cho Khách hàng "Thin-file"
 
 **Tác giả:** Võ Hoàng Long
 **Bộ dữ liệu:** Home Credit Default Risk (`application_train.csv`, `installments_payments.csv`)
@@ -25,9 +25,11 @@
 
 ---
 
-## 1. Tóm tắt
+## 1. Tóm tắt điều hành
 
-Dự án **Shinsa AI** xây dựng một hệ thống chấm điểm rủi ro tín dụng tự động, nhắm đến nhóm khách hàng **"hồ sơ mỏng" (Thin-file)** — những cá nhân chưa từng có lịch sử vay trả góp trong hệ thống, chiếm khoảng **5,16%** tổng số hồ sơ. Đây là nhóm khách hàng bị mô hình chấm điểm truyền thống (CIC/FICO) bỏ sót do thiếu dữ liệu lịch sử tín dụng.
+Dự án **Shinsa AI** xây dựng một mô hình **phân loại nhị phân (Binary Classification)** để tự động ra quyết định **Duyệt vay / Từ chối vay**, nhắm đến nhóm khách hàng **"hồ sơ mỏng" (Thin-file)** — những cá nhân chưa từng có lịch sử vay trả góp trong hệ thống, chiếm khoảng **5,16%** tổng số hồ sơ. Đây là nhóm khách hàng bị các mô hình chấm điểm tín dụng truyền thống (CIC/FICO) bỏ sót do thiếu dữ liệu lịch sử tín dụng.
+
+Về mặt kỹ thuật, mô hình dự đoán ra một **xác suất vỡ nợ** (một giá trị liên tục từ 0 đến 1) cho mỗi hồ sơ; xác suất này sau đó được so sánh với một **ngưỡng quyết định (threshold)** để quy về nhãn nhị phân cuối cùng: `0 = Duyệt vay` hoặc `1 = Từ chối vay`. Nói cách khác, đầu ra nghiệp vụ của hệ thống là **quyết định Có/Không**, không phải một thang điểm tín dụng (credit score) để xếp hạng khách hàng.
 
 Kết quả chính đạt được:
 
@@ -383,6 +385,6 @@ Dự án Shinsa AI đã hoàn thành và đáp ứng được các mục tiêu n
 - Xây dựng thành công mô hình phân loại rủi ro vỡ nợ với **ROC-AUC ổn định ~0,76** trên cả cross-validation (0,7606) và tập test độc lập (0,7657).
 - Chứng minh được đặc trưng hành vi tự tổng hợp (`MAX_DAYS_LATE`, `TOTAL_INSTALLMENTS`) là tín hiệu dự báo rủi ro **ổn định và có ý nghĩa**, lọt Top 15 biến quan trọng nhất và Top 5 theo SHAP — có khả năng thay thế một phần vai trò của điểm ngoại kiểm khi các điểm này bị khuyết, đúng như giả thuyết kinh doanh ban đầu.
 - Cung cấp hai chiến lược ngưỡng quyết định rõ ràng (Tăng trưởng và Phòng thủ) kèm phân tích độ nhạy theo tỷ lệ chi phí, giúp bộ phận kinh doanh linh hoạt lựa chọn theo khẩu vị rủi ro và bối cảnh kinh tế thực tế, thay vì phụ thuộc vào một ngưỡng 0,5 cứng nhắc.
-- Ứng dụng SHAP để minh bạch hóa quyết định của mô hình, đáp ứng yêu cầu giải trình (explainability) — yếu tố then chốt trong lĩnh vực chấm điểm tín dụng.
+- Ứng dụng SHAP để minh bạch hóa quyết định của mô hình, đáp ứng yêu cầu giải trình (explainability) — yếu tố then chốt khi triển khai một mô hình ra quyết định tự động (Duyệt/Từ chối) trong lĩnh vực tín dụng.
 
 Những hạn chế đã nêu (sự phụ thuộc vào `EXT_SOURCE`, Precision còn thấp, giả định chi phí chưa được kiểm chứng) là cơ sở rõ ràng cho các hướng cải tiến tiếp theo của dự án.
