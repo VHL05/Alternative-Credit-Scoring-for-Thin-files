@@ -9,7 +9,7 @@
 
 ## Mục lục
 
-1. [Tóm tắt điều hành](#1-tóm-tắt-điều-hành)
+1. [Tóm tắt](#1-tóm-tắt)
 2. [Bài toán kinh doanh & Mục tiêu nghiên cứu](#2-bài-toán-kinh-doanh--mục-tiêu-nghiên-cứu)
 3. [Dữ liệu](#3-dữ-liệu)
 4. [Phân tích khám phá dữ liệu (EDA) & Xử lý dữ liệu](#4-phân-tích-khám-phá-dữ-liệu-eda--xử-lý-dữ-liệu)
@@ -25,7 +25,7 @@
 
 ---
 
-## 1. Tóm tắt điều hành
+## 1. Tóm tắt
 
 Dự án **Shinsa AI** xây dựng một hệ thống chấm điểm rủi ro tín dụng tự động, nhắm đến nhóm khách hàng **"hồ sơ mỏng" (Thin-file)** — những cá nhân chưa từng có lịch sử vay trả góp trong hệ thống, chiếm khoảng **5,16%** tổng số hồ sơ. Đây là nhóm khách hàng bị mô hình chấm điểm truyền thống (CIC/FICO) bỏ sót do thiếu dữ liệu lịch sử tín dụng.
 
